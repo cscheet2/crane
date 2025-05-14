@@ -1,0 +1,7 @@
+body, div#root {
+  margin: 0px;
+}
+
+canvas#crane {
+  border: 1px solid #000000;
+}

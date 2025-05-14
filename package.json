@@ -1,9 +1,11 @@
 {
   "name": "crane",
+  "author": "Raegan Scheet",
   "version": "1.0.0",
-  "description": "",
+  "description": "crane :D",
+  "license": "UNLICENSED",
   "private": true,
-  "main": "index.js",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
@@ -11,18 +13,17 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
-  "author": "Raegan Scheet",
-  "license": "ISC",
-  "packageManager": "pnpm@10.10.0",
   "devDependencies": {
     "@types/jquery": "^3.5.32",
     "@types/node": "^22.15.17",
+    "@types/three": "^0.176.0",
     "gh-pages": "^6.3.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-plugin-checker": "^0.9.3"
   },
   "dependencies": {
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "three": "^0.176.0"
   }
 }
