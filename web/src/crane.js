@@ -6,6 +6,7 @@ loader.load(
     gltf.scene.position.set(0, 0, 0);
     gltf.scene.scale.set(0.05, 0.05, 0.05);
     scene.add(gltf.scene); 
+    console.log(gltf.scene);
   },
   undefined,
   (error) => { 
