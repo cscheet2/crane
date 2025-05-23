@@ -16,8 +16,8 @@ ament_target_dependencies(excavation rclcpp interfaces)
 add_executable(hopper src/hopper.cpp)
 ament_target_dependencies(hopper rclcpp interfaces)
 
-add_executable(linear_actuator src/excavation.cpp)
-ament_target_dependencies(excavation rclcpp interfaces)
+add_executable(linear_actuator src/linear_actuator.cpp)
+ament_target_dependencies(linear_actuator rclcpp interfaces)
 
 install(TARGETS
   excavation
