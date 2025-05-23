@@ -5,7 +5,7 @@
 
 class Vision : public rclcpp::Node {
   public:
-    Vision() : Node("drive_train") {
+    Vision() : Node("vision") {
       auto topic_callback = [this](interfaces::msg::Vision::UniquePtr msg) -> void {
         RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
       };

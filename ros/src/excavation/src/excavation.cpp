@@ -5,7 +5,7 @@
 
 class Excavation : public rclcpp::Node {
   public:
-    Excavation() : Node("drive_train") {
+    Excavation() : Node("excavation") {
       auto topic_callback = [this](interfaces::msg::Excavation::UniquePtr msg) -> void {
         RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
       };
