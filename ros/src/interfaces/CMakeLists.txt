@@ -14,6 +14,7 @@ find_package(std_msgs REQUIRED)
 #  "srv/YourService.srv"
 #  "action/YourAction.action"
 rosidl_generate_interfaces(${PROJECT_NAME}
+  action/MoveLinearActuator.action
   msg/DriveTrain.msg
   msg/Excavation.msg
   msg/Hopper.msg

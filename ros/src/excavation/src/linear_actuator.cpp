@@ -1,7 +1,10 @@
+#include <functional>
 #include <memory>
+#include <thread>
 
 #include "rclcpp/rclcpp.hpp"
 #include "interfaces/msg/hopper.hpp"
+#include "interfaces/action/move_linear_actuator.hpp"
 
 /**
  * Enum to keep track of the current hopper state.
@@ -14,11 +17,13 @@ enum LINEAR_ACTUATOR_STATE : int8_t {
 
 class LinearActuator : public rclcpp::Node {
   public:
-    LinearActuator() : Node("linear_actuator") {
+    LinearActuator() : Node("linear_actuator"), state_(RESTING) {
+      using namespace std::placeholders;
       
     }
   private:
-    enum LINEAR_ACTUATOR_STATE state = RESTING;
+    
+    LINEAR_ACTUATOR_STATE state_;
 };
 
 int main(int argc, char* argv[]) {

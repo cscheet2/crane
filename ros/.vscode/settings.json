@@ -64,6 +64,7 @@
     "source_location": "cpp",
     "future": "cpp",
     "shared_mutex": "cpp",
-    "stdfloat": "cpp"
+    "stdfloat": "cpp",
+    "functional": "cpp"
   }
 }

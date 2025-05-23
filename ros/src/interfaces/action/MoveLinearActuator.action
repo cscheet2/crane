@@ -1,0 +1,8 @@
+# move the linear actuator to target
+int8 target
+---
+# was this successful
+bool success
+---
+# position of arm (make better later)
+int8 percent_traveled
