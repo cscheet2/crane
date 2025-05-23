@@ -10,9 +10,9 @@ using namespace std::chrono_literals;
 /**
  * Node to initalize the robots joystick control
  */
-class ControlPublisher : public rclcpp::Node {
+class Controller : public rclcpp::Node {
   public:
-    ControlPublisher() : Node("control_publisher"), count_(0) { 
+    Controller() : Node("controller"), count_(0) { 
       publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
       auto timer_callback = [this]() -> void {
         auto message = std_msgs::msg::String();
@@ -27,3 +27,10 @@ class ControlPublisher : public rclcpp::Node {
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
     size_t count_;
 };
+
+int main(int argc, char* argv[]) {
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<Controller>());
+  rclcpp::shutdown();
+  return 0;
+}

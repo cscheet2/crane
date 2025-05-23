@@ -1,0 +1,37 @@
+# colcon build stuff
+build/
+install/
+log/
+
+# ros2 stuff
+*.pyc
+*.pyo
+*.swp
+*.bak
+*.DS_Store
+
+# python virtual environments
+venv/
+env/
+ENV/
+
+# CMake & catkin/cmake tools
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# ROS-specific files 
+ament_cmake_environment_hooks/
+ament_prefix_path/
+local_setup.*
+
+# Miscellaneous
+*.log
+*.old
+*.orig
+*.rej
+*.out
+
+# ROS 2 launch files cache 
+__pycache__/
