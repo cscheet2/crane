@@ -18,6 +18,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/Excavation.msg
   msg/Hopper.msg
   msg/Vision.msg
+  srv/LinearActuator.srv
   DEPENDENCIES std_msgs
 )
 

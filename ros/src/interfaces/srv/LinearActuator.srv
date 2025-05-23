@@ -1,0 +1,5 @@
+# request to move linear actuator
+int8 state
+---
+# return success code
+int8 error

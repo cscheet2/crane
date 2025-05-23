@@ -13,6 +13,19 @@ find_package(interfaces REQUIRED)
 add_executable(excavation src/excavation.cpp)
 ament_target_dependencies(excavation rclcpp interfaces)
 
+add_executable(hopper src/hopper.cpp)
+ament_target_dependencies(hopper rclcpp interfaces)
+
+add_executable(linear_actuator src/excavation.cpp)
+ament_target_dependencies(excavation rclcpp interfaces)
+
+install(TARGETS
+  excavation
+  hopper
+  linear_actuator
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
