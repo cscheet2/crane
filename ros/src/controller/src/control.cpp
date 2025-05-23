@@ -3,28 +3,35 @@
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
-#include "interfaces/msg/drive_train.hpp"
 
+#include "interfaces/msg/drive_train.hpp"
+#include "interfaces/msg/excavation.hpp"
+#include "interfaces/msg/hopper.hpp"
+#include "interfaces/msg/vision.hpp"
+
+using namespace rclcpp;
 using namespace std::chrono_literals;
 
 /**
  * Node to initalize the robots joystick control
  */
-class Controller : public rclcpp::Node {
+class Controller : public Node {
   public:
     Controller() : Node("controller"), count_(0) { 
-      publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("drive-train", 10);
+      drivetrain_publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("drive-train", 10);
       auto timer_callback = [this]() -> void {
         auto message = interfaces::msg::DriveTrain();
         message.data = ":3 " + std::to_string(this->count_++);
         RCLCPP_INFO(this->get_logger(), "publishing '%s'", message.data.c_str());
-        this->publisher_->publish(message);
+        this->drivetrain_publisher_->publish(message);
       };
       timer_ = this->create_wall_timer(500ms, timer_callback);
     }
   private:
-    rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<interfaces::msg::DriveTrain>::SharedPtr publisher_;
+    TimerBase::SharedPtr timer_;
+    Publisher<interfaces::msg::DriveTrain>::SharedPtr drivetrain_publisher_;
+    // Publisher<interfaces::msg::Excavation>::SharedPtr execavation_publisher_;
+    
     size_t count_;
 };
 

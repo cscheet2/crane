@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 
-add_executable(drive-train src/movement.cpp)
+add_executable(drive-train src/drive-train.cpp)
 ament_target_dependencies(drive-train rclcpp interfaces)
 
 install(TARGETS

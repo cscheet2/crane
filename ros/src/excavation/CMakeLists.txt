@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 
-add_executable(excavation src/movement.cpp)
+add_executable(excavation src/excavation.cpp)
 ament_target_dependencies(excavation rclcpp interfaces)
 
 # uncomment the following section in order to fill in

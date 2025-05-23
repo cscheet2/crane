@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 
-add_executable(hopper src/movement.cpp)
+add_executable(hopper src/hopper.cpp)
 ament_target_dependencies(hopper rclcpp interfaces)
 # uncomment the following section in order to fill in
 # further dependencies manually.
