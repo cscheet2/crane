@@ -5,11 +5,11 @@
 
 class DriveTrain : public rclcpp::Node {
   public:
-    DriveTrain() : Node("drive_train") {
+    DriveTrain() : Node("drivetrain") {
       auto topic_callback = [this](interfaces::msg::DriveTrain::UniquePtr msg) -> void {
         RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
       };
-      subscription_ = this->create_subscription<interfaces::msg::DriveTrain>("drive-train", 10, topic_callback);
+      subscription_ = this->create_subscription<interfaces::msg::DriveTrain>("drivetrain", 10, topic_callback);
     }
   private:
     rclcpp::Subscription<interfaces::msg::DriveTrain>::SharedPtr subscription_;

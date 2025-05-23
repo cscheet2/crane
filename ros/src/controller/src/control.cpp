@@ -18,7 +18,7 @@ using namespace std::chrono_literals;
 class Controller : public Node {
   public:
     Controller() : Node("controller"), count_(0) { 
-      drivetrain_publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("drive-train", 10);
+      drivetrain_publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("drivetrain", 10);
       auto timer_callback = [this]() -> void {
         auto message = interfaces::msg::DriveTrain();
         message.data = ":3 " + std::to_string(this->count_++);

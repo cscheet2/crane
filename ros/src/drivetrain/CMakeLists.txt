@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(drive-train)
+project(drivetrain)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,11 +10,11 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 
-add_executable(drive-train src/drive-train.cpp)
-ament_target_dependencies(drive-train rclcpp interfaces)
+add_executable(drivetrain src/drivetrain.cpp)
+ament_target_dependencies(drivetrain rclcpp interfaces)
 
 install(TARGETS
-  drive-train
+  drivetrain
   DESTINATION lib/${PROJECT_NAME}
 )
 
