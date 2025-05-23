@@ -3,11 +3,12 @@
 
 class LeftMotor : public rclcpp::Node {
   public:
-    LeftMotor() : Node("drivetrain") {
-      auto topic_callback = [this](interfaces::msg::MotorSpeed::UniquePtr msg) -> void {
-        RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg->speed);
-      };
-      subscription_ = this->create_subscription<interfaces::msg::MotorSpeed>("leftmotor", 10, topic_callback);
+    LeftMotor() : Node("leftmotor") {
+      subscription_ = this->create_subscription<interfaces::msg::MotorSpeed>("leftmotor", 10, 
+        [this](interfaces::msg::MotorSpeed::UniquePtr msg) -> void {
+          RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg->speed);
+        }
+      );
     }
   private:
     rclcpp::Subscription<interfaces::msg::MotorSpeed>::SharedPtr subscription_;
