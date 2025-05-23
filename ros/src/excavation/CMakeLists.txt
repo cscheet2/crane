@@ -7,6 +7,12 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(interfaces REQUIRED)
+
+add_executable(excavation src/movement.cpp)
+ament_target_dependencies(excavation rclcpp interfaces)
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)

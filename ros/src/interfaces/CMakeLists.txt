@@ -15,6 +15,9 @@ find_package(std_msgs REQUIRED)
 #  "action/YourAction.action"
 rosidl_generate_interfaces(${PROJECT_NAME}
   msg/DriveTrain.msg
+  msg/Excavation.msg
+  msg/Hopper.msg
+  msg/Vision.msg
   DEPENDENCIES std_msgs
 )
 

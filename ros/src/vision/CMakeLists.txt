@@ -7,6 +7,11 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(interfaces REQUIRED)
+
+add_executable(vision src/movement.cpp)
+ament_target_dependencies(vision rclcpp interfaces)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)

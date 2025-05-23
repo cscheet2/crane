@@ -13,11 +13,11 @@ using namespace std::chrono_literals;
 class Controller : public rclcpp::Node {
   public:
     Controller() : Node("controller"), count_(0) { 
-      publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("topic", 10);
+      publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("drive-train", 10);
       auto timer_callback = [this]() -> void {
         auto message = interfaces::msg::DriveTrain();
-        message.message = ":3 " + std::to_string(this->count_++);
-        RCLCPP_INFO(this->get_logger(), "publishing '%s'", message.message.c_str());
+        message.data = ":3 " + std::to_string(this->count_++);
+        RCLCPP_INFO(this->get_logger(), "publishing '%s'", message.data.c_str());
         this->publisher_->publish(message);
       };
       timer_ = this->create_wall_timer(500ms, timer_callback);

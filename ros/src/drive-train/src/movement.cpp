@@ -3,14 +3,13 @@
 #include "rclcpp/rclcpp.hpp"
 #include "interfaces/msg/drive_train.hpp"
 
-
 class DriveTrain : public rclcpp::Node {
   public:
     DriveTrain() : Node("drive_train") {
       auto topic_callback = [this](interfaces::msg::DriveTrain::UniquePtr msg) -> void {
-        RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->message.c_str());
+        RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
       };
-      subscription_ = this->create_subscription<interfaces::msg::DriveTrain>("topic", 10, topic_callback);
+      subscription_ = this->create_subscription<interfaces::msg::DriveTrain>("drive-train", 10, topic_callback);
     }
   private:
     rclcpp::Subscription<interfaces::msg::DriveTrain>::SharedPtr subscription_;
