@@ -1,18 +1,19 @@
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "interfaces/msg/drive_train.hpp"
+
 
 class DriveTrain : public rclcpp::Node {
   public:
     DriveTrain() : Node("drive_train") {
-      auto topic_callback = [this](std_msgs::msg::String::UniquePtr msg) -> void {
-        RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
+      auto topic_callback = [this](interfaces::msg::DriveTrain::UniquePtr msg) -> void {
+        RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->message.c_str());
       };
-      subscription_ = this->create_subscription<std_msgs::msg::String>("topic", 10, topic_callback);
+      subscription_ = this->create_subscription<interfaces::msg::DriveTrain>("topic", 10, topic_callback);
     }
   private:
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+    rclcpp::Subscription<interfaces::msg::DriveTrain>::SharedPtr subscription_;
 };
 
 int main(int argc, char* argv[]) {

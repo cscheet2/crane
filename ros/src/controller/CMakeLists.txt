@@ -8,10 +8,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
+find_package(interfaces REQUIRED)
 
 add_executable(controller src/control.cpp)
-ament_target_dependencies(controller rclcpp std_msgs)
+ament_target_dependencies(controller rclcpp interfaces)
 
 install(TARGETS
   controller

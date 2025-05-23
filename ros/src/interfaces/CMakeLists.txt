@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(drive-train)
+project(interfaces)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,20 +7,20 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
 
-add_executable(drive-train src/movement.cpp)
-ament_target_dependencies(drive-train rclcpp interfaces)
-
-install(TARGETS
-  drive-train
-  DESTINATION lib/${PROJECT_NAME}
+#  "msg/YourMessage.msg"
+#  "srv/YourService.srv"
+#  "action/YourAction.action"
+rosidl_generate_interfaces(${PROJECT_NAME}
+  msg/DriveTrain.msg
+  DEPENDENCIES std_msgs
 )
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-  # the following line -kips the linter which checks for copyrights
+  # the following line skips the linter which checks for copyrights
   # comment the line when a copyright and license is added to all source files
   set(ament_cmake_copyright_FOUND TRUE)
   # the following line skips cpplint (only works in a git repo)

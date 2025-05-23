@@ -3,7 +3,7 @@
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
+#include "interfaces/msg/drive_train.hpp"
 
 using namespace std::chrono_literals;
 
@@ -13,18 +13,18 @@ using namespace std::chrono_literals;
 class Controller : public rclcpp::Node {
   public:
     Controller() : Node("controller"), count_(0) { 
-      publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+      publisher_ = this->create_publisher<interfaces::msg::DriveTrain>("topic", 10);
       auto timer_callback = [this]() -> void {
-        auto message = std_msgs::msg::String();
-        message.data = ":3 " + std::to_string(this->count_++);
-        RCLCPP_INFO(this->get_logger(), "publishing '%s'", message.data.c_str());
+        auto message = interfaces::msg::DriveTrain();
+        message.message = ":3 " + std::to_string(this->count_++);
+        RCLCPP_INFO(this->get_logger(), "publishing '%s'", message.message.c_str());
         this->publisher_->publish(message);
       };
       timer_ = this->create_wall_timer(500ms, timer_callback);
     }
   private:
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+    rclcpp::Publisher<interfaces::msg::DriveTrain>::SharedPtr publisher_;
     size_t count_;
 };
 
