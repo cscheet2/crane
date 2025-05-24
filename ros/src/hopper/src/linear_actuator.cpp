@@ -3,6 +3,7 @@
 #include <thread>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_action/rclcpp_action.hpp"
 #include "interfaces/msg/hopper.hpp"
 #include "interfaces/action/move_linear_actuator.hpp"
 
@@ -17,6 +18,8 @@ enum LINEAR_ACTUATOR_STATE : int8_t {
 
 class LinearActuator : public rclcpp::Node {
   public:
+    // using Control = interfaces::action::MoveLinearActuator;
+    // using GoalHandleControl = rclcpp_action::ServerGoalHandle<MoveLinearActuator>;
     LinearActuator() : Node("linear_actuator"), state_(RESTING) {
       using namespace std::placeholders;
       

@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
+find_package(rclcpp_action REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -18,7 +19,7 @@ add_executable(hopper src/hopper.cpp)
 ament_target_dependencies(hopper rclcpp interfaces)
 
 add_executable(linear_actuator src/linear_actuator.cpp)
-ament_target_dependencies(linear_actuator rclcpp interfaces)
+ament_target_dependencies(linear_actuator rclcpp interfaces rclcpp_action)
 
 install(TARGETS
   hopper
