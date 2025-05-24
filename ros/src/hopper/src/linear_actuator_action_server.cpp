@@ -66,7 +66,7 @@ private:
   rclcpp_action::Server<MoveLinearActuator>::SharedPtr action_server_;
 
   void execute(const std::shared_ptr<GoalHandleControl> goal_handle) {
-    RCLCPP_INFO(this->get_logger(), "Executing goal");
+    RCLCPP_INFO(this->get_logger(), "Executing r");
     rclcpp::Rate loop_rate(1);
     const auto goal = goal_handle->get_goal();
     auto feedback = std::make_shared<MoveLinearActuator::Feedback>();
@@ -96,4 +96,4 @@ private:
 };
 }
 
-RCLCPP_COMPONENTS_REGISTER_NODE(linear_actuator_action::LinearActuatorActionServer);
+RCLCPP_COMPONENTS_REGISTER_NODE(linear_actuator_action::LinearActuatorActionServer)
