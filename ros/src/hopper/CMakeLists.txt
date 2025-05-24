@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(excavation)
+project(hopper)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,17 +10,21 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 
-add_executable(excavation src/excavation.cpp)
-ament_target_dependencies(excavation rclcpp interfaces)
-
-install(TARGETS
-  excavation
-  DESTINATION lib/${PROJECT_NAME}
-)
-
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+add_executable(hopper src/hopper.cpp)
+ament_target_dependencies(hopper rclcpp interfaces)
+
+add_executable(linear_actuator src/linear_actuator.cpp)
+ament_target_dependencies(linear_actuator rclcpp interfaces)
+
+install(TARGETS
+  hopper
+  linear_actuator
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
