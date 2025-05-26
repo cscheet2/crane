@@ -18,6 +18,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/DriveTrain.msg
   msg/Excavation.msg
   msg/Hopper.msg
+  msg/LinearActuatorState.msg
   msg/MotorSpeed.msg
   msg/Vision.msg
   srv/LinearActuator.srv

@@ -3,6 +3,7 @@
  * @see https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html
  */
 
+#include <chrono>
 #include <functional>
 #include <memory>
 #include <thread>
@@ -10,9 +11,12 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
+
+#include "interfaces/msg/linear_actuator_state.hpp"
 #include "interfaces/action/move_linear_actuator.hpp"
 
 #include "hopper/visibility_control.h"
+#include "hopper/hopper_macros.h"
 
 namespace linear_actuator_action 
 {
@@ -28,6 +32,7 @@ public:
   {
     using namespace std::placeholders;
 
+    // action
     auto handle_goal = [this](
       const rclcpp_action::GoalUUID & uuid,
       std::shared_ptr<const MoveLinearActuator::Goal> goal) 
@@ -60,10 +65,21 @@ public:
       handle_goal,
       handle_cancel,
       handle_accepted);
+    
+    // publish state message
+    state_publisher_ = this->create_publisher<interfaces::msg::LinearActuatorState>("linear_actuator_state", 10);
+    auto timer_callback = [this]() -> void {
+      auto message = interfaces::msg::LinearActuatorState();
+      RCLCPP_INFO(this->get_logger(), "linear actuator current state: '%s'", linear_actuator_state_to_str(message.state));
+    };
   }
 
 private:
   rclcpp_action::Server<MoveLinearActuator>::SharedPtr action_server_;
+  rclcpp::TimerBase::SharedPtr timer_;
+  rclcpp::Publisher<interfaces::msg::LinearActuatorState>::SharedPtr state_publisher_;
+  size_t count_;
+  uint8_t linear_actuator_state;
 
   void execute(const std::shared_ptr<GoalHandleControl> goal_handle) {
     RCLCPP_INFO(this->get_logger(), "Executing r");

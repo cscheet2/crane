@@ -3,6 +3,8 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
+#include "hopper/hopper_macros.h"
+
 #include "interfaces/msg/hopper.hpp"
 #include "interfaces/action/move_linear_actuator.hpp"
 
