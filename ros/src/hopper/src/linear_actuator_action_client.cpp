@@ -14,7 +14,6 @@ namespace linear_actuator_action
 {
 class LinearActuatorActionClient : public rclcpp::Node
 {
-
 public:
   using MoveLinearActuator = interfaces::action::MoveLinearActuator;
   using GoalHandleControl = rclcpp_action::ClientGoalHandle<MoveLinearActuator>;
@@ -24,7 +23,7 @@ public:
   {
     this->client_ptr_ = rclcpp_action::create_client<MoveLinearActuator>(
       this,
-      "move_linear_actuator");
+      "linear_actuator");
     auto timer_callback_lambda = [this](){ return this->send_goal(); };
     this->timer_ = this->create_wall_timer(
       std::chrono::milliseconds(500),

@@ -12,7 +12,7 @@
 #include "rclcpp_components/register_node_macro.hpp"
 #include "interfaces/action/move_linear_actuator.hpp"
 
-#include "hopper/include/hopper/visibility_control.h"
+#include "hopper/visibility_control.h"
 
 namespace linear_actuator_action 
 {
