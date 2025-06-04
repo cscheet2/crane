@@ -10,6 +10,8 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(interfaces REQUIRED)
 
+include_directories(include)
+
 add_executable(controller src/control.cpp)
 ament_target_dependencies(controller rclcpp interfaces)
 
