@@ -1,28 +1,11 @@
-#ifndef _CONTROL_H
-#define _CONTROL_H
+#ifndef _JOYSTICK_CONTROLLER_HPP
+#define _JOYSTICK_CONTROLLER_HPP
 
-#include <chrono>
 #include <memory>
 #include <string>
+#include <vector>
 
-#include "rclcpp/rclcpp.hpp"
+#include "hardware_interface/handle.hpp"
 
-#include "interfaces/msg/drive_train.hpp"
-#include "interfaces/msg/excavation.hpp"
-#include "interfaces/msg/hopper.hpp"
-#include "interfaces/msg/vision.hpp"
 
-using namespace std::chrono_literals;
-
-class Controller : public rclcpp::Node 
-{
-public:
-  Controller();
-
-private:
-  rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<interfaces::msg::DriveTrain>::SharedPtr drivetrain_publisher_;
-  size_t count_;
-};
-
-#endif  // _CONTROL_H
+#endif  // _JOYSTICK_CONTROLLER_HPP
