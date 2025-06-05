@@ -1,0 +1,9 @@
+<library path="libjoystick_hardware">
+  <class name="joystick_controller/JoystickHardware"
+         type="joystick_controller::JoystickHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      A hardware interface for reading joystick axis and button states as ROS 2 state interfaces.
+    </description>
+  </class>
+</library>

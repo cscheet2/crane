@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<controller xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <ros2_control name="controller" type="system">
+
+    <hardware>
+      <plugin>joystick_controller/JoystickHardware</plugin>
+    </hardware>
+
+    <joint name="joystick_axis_x">
+      <state_interface name="position"/>
+    </joint>
+
+    <joint name="joystick_axis_y">
+      <state_interface name="position"/>
+    </joint>
+    
+  </ros2_control>
+</controller>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<controller xmlns:xacro="http://www.ros.org/wiki/xacro" name="controller">
+  <xacro:include filename="ros2_control.xacro"/>
+</controller>

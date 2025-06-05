@@ -12,8 +12,13 @@ find_package(interfaces REQUIRED)
 
 include_directories(include)
 
-add_executable(controller src/control.cpp)
+add_executable(controller src/controller.cpp)
 ament_target_dependencies(controller rclcpp interfaces)
+
+install(FILES
+  controller_description.xml
+  DESTINATION share/${PROJECT_NAME}
+)
 
 install(TARGETS
   controller
