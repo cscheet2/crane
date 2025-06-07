@@ -1,5 +1,10 @@
+hardware:
+  plugin: "remote_control::RemoteControl"
+  parameters: {}
+
 controller_manager:
   ros__parameters:
     update_rate: 50  # Hz
-    joint_state_broadcaster:
-      type: joint_state_broadcaster/JointStateBroadcaster
+    joystick_publisher_controller: 
+      type: remote_control::RemoteControlPublisher
+      joints: []

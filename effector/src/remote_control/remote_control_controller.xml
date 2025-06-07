@@ -1,0 +1,9 @@
+<library path="remote_control_publisher">
+  <class name="remote_control/RemoteControlPublisher"
+         type="remote_control::RemoteControlPublisher"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>
+      Publishes controller values to /joy
+    </description>
+  </class>
+</library>

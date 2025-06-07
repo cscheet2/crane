@@ -1,9 +1,9 @@
-<library path="libremote_control">
+<library path="remote_control">
   <class name="remote_control/RemoteControl"
          type="remote_control::RemoteControl"
          base_class_type="hardware_interface::SystemInterface">
     <description>
-      Hardware interface for end effortor controller
+      Hardware interface for end effector controller
     </description>
   </class>
 </library>
