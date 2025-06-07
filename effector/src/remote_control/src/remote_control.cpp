@@ -29,9 +29,6 @@ hardware_interface::CallbackReturn RemoteControl::on_init(const hardware_interfa
     return hardware_interface::CallbackReturn::ERROR;
   }
 
-  int abs_min = libevdev_get_abs_minimum(dev_, ABS_X);
-  int abs_max = libevdev_get_abs_maximum(dev_, ABS_X);
-
   abs_x_min_ = libevdev_get_abs_minimum(dev_, ABS_X);
   abs_x_max_ = libevdev_get_abs_maximum(dev_, ABS_X);
   abs_y_min_ = libevdev_get_abs_minimum(dev_, ABS_Y);
