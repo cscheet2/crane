@@ -1,0 +1,8 @@
+<library path="gamepad_hardware">
+  <class
+    name="gamepad/GamepadHardware"
+    type="gamepad::GamepadHardware"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>Gamepad hardware interface</description>
+  </class>
+</library>

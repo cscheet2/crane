@@ -1,7 +1,6 @@
 #ifndef _GAMEPAD_HPP
 #define _GAMEPAD_HPP
 
-#include <libevdev/libevdev.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <linux/joystick.h>

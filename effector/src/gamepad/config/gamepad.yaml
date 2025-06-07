@@ -1,0 +1,31 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50
+
+    hardware_components:
+      - name: gamepad_hardware
+        type: system
+        plugin: gamepad::GamepadHardware
+        parameters:
+          device: "/dev/input/by-id/usb-Logitech_Logitech_Dual_Action_CC64C09D-event-joystick"
+        hardware_interfaces:
+          state_interfaces:
+            - name: left_x
+            - name: left_y
+            - name: right_x
+            - name: right_y
+            - name: button_0
+            - name: button_1
+
+    ros2_controllers:
+      - name: gamepad_controller
+        type: gamepad::GamepadPublisher
+        parameters:
+          subscribed_axes:
+            - name: left_x
+            - name: left_y
+            - name: right_x
+            - name: right_y
+          subscribed_buttons:
+            - name: button_0
+            - name: button_1

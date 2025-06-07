@@ -1,4 +1,7 @@
 ros2_control:
+  ros__parameters:
+    update_rate: 50  # Hz
+
   hardware_components:
     - name: gamepad_hardware
       type: system

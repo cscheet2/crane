@@ -1,0 +1,5 @@
+controller_manager:
+  ros__parameters:
+    gamepad_controller:
+      type: "gamepad::GamepadPublisher"
+      name: "gamepad_controller"

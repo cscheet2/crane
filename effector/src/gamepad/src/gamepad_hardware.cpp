@@ -1,5 +1,5 @@
 #include <cmath>
-#include "gamepad/gamepad.hpp"
+#include "gamepad/gamepad_hardware.hpp"
 
 namespace gamepad
 {
@@ -40,7 +40,9 @@ std::vector<hardware_interface::StateInterface> GamepadHardware::export_state_in
 }
 
 hardware_interface::return_type GamepadHardware::read(const rclcpp::Time & time, const rclcpp::Duration & period)
-{
+{ 
+  (void)time;
+  (void)period;
   struct js_event event;
   while (::read(fd_, &event, sizeof(event)) > 0) {
     event.type &= ~JS_EVENT_INIT;  // Ignore init events

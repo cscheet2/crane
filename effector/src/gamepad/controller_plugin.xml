@@ -1,0 +1,8 @@
+<library path="gamepad_controller">
+  <class
+    name="gamepad/GamepadPublisher"
+    type="gamepad::GamepadPublisher"
+    base_class_type="controller_interface::ControllerInterface">
+    <description>Gamepad state publisher controller</description>
+  </class>
+</library>
