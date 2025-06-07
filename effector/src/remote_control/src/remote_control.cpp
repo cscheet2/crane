@@ -1,3 +1,4 @@
+#include <cmath>
 #include "remote_control/remote_control.hpp"
 
 namespace remote_control 
@@ -28,6 +29,17 @@ hardware_interface::CallbackReturn RemoteControl::on_init(const hardware_interfa
     return hardware_interface::CallbackReturn::ERROR;
   }
 
+  int abs_min = libevdev_get_abs_minimum(dev_, ABS_X);
+  int abs_max = libevdev_get_abs_maximum(dev_, ABS_X);
+
+  abs_x_min_ = libevdev_get_abs_minimum(dev_, ABS_X);
+  abs_x_max_ = libevdev_get_abs_maximum(dev_, ABS_X);
+  abs_y_min_ = libevdev_get_abs_minimum(dev_, ABS_Y);
+  abs_y_max_ = libevdev_get_abs_maximum(dev_, ABS_Y);
+
+  RCLCPP_INFO(rclcpp::get_logger("RemoteControl"),
+              "Axis ranges: X [%d, %d], Y [%d, %d]", abs_x_min_, abs_x_max_, abs_y_min_, abs_y_max_);
+
   return hardware_interface::CallbackReturn::SUCCESS;
 }
 
@@ -42,13 +54,16 @@ std::vector<hardware_interface::StateInterface> RemoteControl::export_state_inte
 hardware_interface::return_type RemoteControl::read(const rclcpp::Time &, const rclcpp::Duration &)
 { 
   struct input_event ev;
+  constexpr double deadzone = 0.05;
   while (libevdev_next_event(dev_, LIBEVDEV_READ_FLAG_NORMAL, &ev) == 0) {
     if (ev.type == EV_ABS) {
       if (ev.code == ABS_X) {
-        axis_x_ = ev.value / 32767.0;  // Normalize from -32767 to 32767
+        double normalized = ((double)(ev.value - abs_x_min_) / (abs_x_max_ - abs_x_min_)) * 2.0 - 1.0;
+        axis_x_ = (std::fabs(normalized) < deadzone) ? 0.0 : normalized;
       } else 
       if (ev.code == ABS_Y) {
-        axis_y_ = ev.value / 32767.0;
+        double normalized = ((double)(ev.value - abs_y_min_) / (abs_y_max_ - abs_y_min_)) * 2.0 - 1.0;
+        axis_y_ = (std::fabs(normalized) < deadzone) ? 0.0 : normalized;
       }
     }
   }

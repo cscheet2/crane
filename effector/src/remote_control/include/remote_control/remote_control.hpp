@@ -29,6 +29,10 @@ private:
   double axis_y_ = 0.0;
   int fd_ = -1;
   struct libevdev* dev_ = nullptr;
+  int abs_x_min_ = 0;
+  int abs_x_max_ = 0;
+  int abs_y_min_ = 0;
+  int abs_y_max_ = 0;
 };
 
 }  // namespace remote_control

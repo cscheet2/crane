@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="remote_control_robot">
+
+  <!-- Base link needed -->
+  <link name="base_link"/>
+
+  <!-- Link for joystick axis x -->
+  <link name="joystick_axis_x_link"/>
+  <joint name="joystick_axis_x" type="continuous">
+    <parent link="base_link"/>
+    <child link="joystick_axis_x_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Link for joystick axis y -->
+  <link name="joystick_axis_y_link"/>
+  <joint name="joystick_axis_y" type="continuous">
+    <parent link="base_link"/>
+    <child link="joystick_axis_y_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ros2_control part -->
   <ros2_control name="RemoteControlSystem" type="system">
     <hardware>
       <plugin>remote_control/RemoteControl</plugin>
     </hardware>
+
     <joint name="joystick_axis_x">
       <state_interface name="position"/>
     </joint>
@@ -11,4 +33,5 @@
       <state_interface name="position"/>
     </joint>
   </ros2_control>
+
 </robot>
