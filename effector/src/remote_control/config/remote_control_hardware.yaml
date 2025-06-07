@@ -1,0 +1,4 @@
+remote_control_hardware:
+  ros__parameters:
+    hardware_plugin: "remote_control/RemoteControl"
+    joints: []

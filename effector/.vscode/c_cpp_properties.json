@@ -6,7 +6,8 @@
         "/opt/ros/jazzy/include/**",
         "${workspaceFolder}/**",
         "${workspaceFolder}/src/**/include",
-        "${workspaceFolder}/install/**/include"
+        "${workspaceFolder}/install/**/include",
+         "/usr/include/libevdev-1.0"
       ],
       "intelliSenseMode": "linux-gcc-x64",
       "cStandard": "c17",

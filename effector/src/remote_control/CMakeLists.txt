@@ -12,6 +12,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)
 
 # add library
 add_library(remote_control SHARED
@@ -22,6 +24,11 @@ add_library(remote_control SHARED
 target_include_directories(remote_control PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
+  ${LIBEVDEV_INCLUDE_DIRS}
+)
+
+target_link_libraries(remote_control
+  PkgConfig::LIBEVDEV
 )
 
 # link dependencies
@@ -52,6 +59,11 @@ install(
   RUNTIME DESTINATION bin
 )
 
+install(
+  DIRECTORY launch description
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_export_include_directories(
   include
 )
@@ -63,6 +75,14 @@ ament_export_dependencies(
   std_msgs
   hardware_interface
   pluginlib
+)
+
+target_link_libraries(remote_control
+  evdev
+)
+
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
 ament_package()
