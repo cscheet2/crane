@@ -81,6 +81,13 @@ ament_export_dependencies(
   pluginlib
 )
 
+install(
+  DIRECTORY description/
+  DESTINATION share/${PROJECT_NAME}/description
+  FILES_MATCHING PATTERN "*.xacro"
+)
+
+
 ### --- Publisher Executable ---
 
 # Add shared library for controller plugin
@@ -112,6 +119,11 @@ install(
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
+)
+
+install(
+  DIRECTORY description
+  DESTINATION share/${PROJECT_NAME}
 )
 
 # Final package macro

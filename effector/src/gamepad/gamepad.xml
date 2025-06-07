@@ -1,0 +1,7 @@
+<class name="gamepad::Gamepad"
+       type="gamepad::Gamepad"
+       base_class_type="hardware_interface::SystemInterface">
+  <description>
+    Gamepad controller to control LSMS end effector
+  </description>
+</class>
