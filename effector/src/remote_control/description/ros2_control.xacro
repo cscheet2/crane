@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <ros2_control name="remote_control_system" type="system">
+    <hardware>
+      <plugin>remote_control/RemoteControl</plugin>
+    </hardware>
+    <joint name="joystick_axis_x">
+      <state_interface name="position"/>
+    </joint>
+    <joint name="joystick_axis_y">
+      <state_interface name="position"/>
+    </joint>
+  </ros2_control>
+</robot>
