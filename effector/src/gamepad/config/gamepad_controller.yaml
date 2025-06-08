@@ -1,5 +1,13 @@
 controller_manager:
   ros__parameters:
+    update_rate: 50  # Hz
+    
+    hardware:
+      - name: "gamepad_hardware"
+        type: "system"
+        plugin: "gamepad::GamepadHardware"
+        parameters:
+          device: "/dev/input/by-id/usb-Logitech_Logitech_Dual_Action_CC64C09D-event-joystick"
+
     gamepad_controller:
       type: "gamepad::GamepadPublisher"
-      name: "gamepad_controller"

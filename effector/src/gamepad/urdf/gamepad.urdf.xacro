@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gamepad_robot">
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.05"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Define dummy joints for gamepad axes -->
+  <joint name="axis_0" type="continuous">
+    <parent link="base_link"/>
+    <child link="axis_0_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="axis_0_link"/>
+
+  <joint name="axis_1" type="continuous">
+    <parent link="base_link"/>
+    <child link="axis_1_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="axis_1_link"/>
+
+  <joint name="axis_2" type="continuous">
+    <parent link="base_link"/>
+    <child link="axis_2_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="axis_2_link"/>
+
+  <joint name="axis_3" type="continuous">
+    <parent link="base_link"/>
+    <child link="axis_3_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="axis_3_link"/>
+
+  <!-- ros2_control hardware interface -->
+  <ros2_control name="gamepad_hardware" type="system">
+    <hardware>
+      <plugin>gamepad/GamepadHardware</plugin>
+      <param name="device">/dev/input/by-id/usb-Logitech_Logitech_Dual_Action_CC64C09D-joystick</param>
+    </hardware>
+
+    <!-- Define gamepad axes -->
+    <joint name="axis_0">
+      <state_interface name="position"/>
+    </joint>
+    <joint name="axis_1">
+      <state_interface name="position"/>
+    </joint>
+    <joint name="axis_2">
+      <state_interface name="position"/>
+    </joint>
+    <joint name="axis_3">
+      <state_interface name="position"/>
+    </joint>
+
+    <!-- Define gamepad buttons as sensors -->
+    <sensor name="button_0">
+      <state_interface name="position"/>
+    </sensor>
+    <sensor name="button_1">
+      <state_interface name="position"/>
+    </sensor>
+    <sensor name="button_2">
+      <state_interface name="position"/>
+    </sensor>
+    <sensor name="button_3">
+      <state_interface name="position"/>
+    </sensor>
+  </ros2_control>
+</robot>

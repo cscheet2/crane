@@ -12,6 +12,7 @@ find_package(controller_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
 # Build the hardware plugin
@@ -24,7 +25,6 @@ ament_target_dependencies(gamepad_hardware
   rclcpp
   pluginlib
 )
-pluginlib_export_plugin_description_file(hardware_interface hardware_plugin.xml)
 
 # Build the controller
 add_library(gamepad_controller SHARED
@@ -35,8 +35,12 @@ ament_target_dependencies(gamepad_controller
   controller_interface
   rclcpp
   rclcpp_lifecycle
+  sensor_msgs
   std_msgs
 )
+
+# Export plugins
+pluginlib_export_plugin_description_file(hardware_interface hardware_plugin.xml)
 pluginlib_export_plugin_description_file(controller_interface controller_plugin.xml)
 
 # Install targets
@@ -53,7 +57,7 @@ install(DIRECTORY include/
 )
 
 # Install config and launch files
-install(DIRECTORY config launch
+install(DIRECTORY config launch urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
