@@ -2,10 +2,10 @@ controller_manager:
   ros__parameters:
     update_rate: 50  # Hz
     
-    gamepad_controller:
+    gamepad_publisher:
       type: gamepad/GamepadPublisher
 
-gamepad_controller:
+gamepad_publisher:
   ros__parameters:
     axes:
       - "axis_0"

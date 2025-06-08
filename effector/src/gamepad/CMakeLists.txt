@@ -27,11 +27,11 @@ ament_target_dependencies(gamepad_hardware
 )
 
 # Build the controller
-add_library(gamepad_controller SHARED
-  src/gamepad_controller.cpp
+add_library(gamepad_publisher SHARED
+  src/gamepad_publisher.cpp
 )
-target_include_directories(gamepad_controller PUBLIC include)
-ament_target_dependencies(gamepad_controller
+target_include_directories(gamepad_publisher PUBLIC include)
+ament_target_dependencies(gamepad_publisher
   controller_interface
   rclcpp
   rclcpp_lifecycle
@@ -45,7 +45,7 @@ pluginlib_export_plugin_description_file(controller_interface controller_plugin.
 
 # Install targets
 install(
-  TARGETS gamepad_hardware gamepad_controller
+  TARGETS gamepad_hardware gamepad_publisher
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin

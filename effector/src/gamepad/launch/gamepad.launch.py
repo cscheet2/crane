@@ -43,7 +43,7 @@ def generate_launch_description():
     controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['gamepad_controller', '--controller-manager-timeout', '30'],
+        arguments=['gamepad_publisher', '--controller-manager-timeout', '30'],
         output='screen',
     )
     

@@ -1,4 +1,4 @@
-#include "gamepad/gamepad_controller.hpp"
+#include "gamepad/gamepad_publisher.hpp"
 
 namespace gamepad
 {

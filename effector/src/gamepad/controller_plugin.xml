@@ -1,4 +1,4 @@
-<library path="gamepad_controller">
+<library path="gamepad_publisher">
   <class
     name="gamepad/GamepadPublisher"
     type="gamepad::GamepadPublisher"
