@@ -85,27 +85,6 @@
             <Name>velocity_2</Name>
             <DataType>LREAL</DataType>
           </Entry>
-          <Entry>
-            <Index>#x5</Index>
-            <SubIndex>3</SubIndex>
-            <BitLen>64</BitLen>
-            <Name>roll</Name>
-            <DataType>LREAL</DataType>
-          </Entry>
-          <Entry>
-            <Index>#x5</Index>
-            <SubIndex>4</SubIndex>
-            <BitLen>64</BitLen>
-            <Name>pitch</Name>
-            <DataType>LREAL</DataType>
-          </Entry>
-          <Entry>
-            <Index>#x5</Index>
-            <SubIndex>5</SubIndex>
-            <BitLen>64</BitLen>
-            <Name>yaw</Name>
-            <DataType>LREAL</DataType>
-          </Entry>
         </RxPdo>
 
 <!-- ***************** input PDO ********************************************************** -->
@@ -125,6 +104,27 @@
             <SubIndex>2</SubIndex>
             <BitLen>64</BitLen>
             <Name>velocity_2</Name>
+            <DataType>LREAL</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>64</BitLen>
+            <Name>roll</Name>
+            <DataType>LREAL</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>64</BitLen>
+            <Name>pitch</Name>
+            <DataType>LREAL</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6</Index>
+            <SubIndex>5</SubIndex>
+            <BitLen>64</BitLen>
+            <Name>yaw</Name>
             <DataType>LREAL</DataType>
           </Entry>
         </TxPdo>
